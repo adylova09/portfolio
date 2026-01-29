@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import Footer from "./Footer";
-
+import Footer from "./FooterHeader";
 import { FaGithub, FaInstagram, FaVk } from "react-icons/fa";
 import { SiGoogle } from "react-icons/si";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
@@ -18,35 +17,39 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
         setCoords(`${lat},${lon}`);
       });
     }
-
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-black p-4 gap-4">
-      <aside className="w-full lg:w-72 bg-[#1f1f1f] rounded-2xl p-6 flex flex-col shadow-lg shadow-yellow-400/10">
+    <div className="flex flex-col lg:flex-row min-h-screen relative bg-black p-4 gap-4">
+      <aside className="
+  
+  w-full lg:w-72
+  h-fit
+  lg:sticky lg:top-4
+  self-start
+  bg-[#1f1f1f]
+  rounded-2xl
+  p-6
+  flex flex-col
+  shadow-lg shadow-yellow-400/10
+
+
+           ">
 
         <div className="relative flex justify-center">
           <div className="relative flex justify-center">
             <img
-              src="https://i1.sndcdn.com/avatars-FwgJaCvpfelEvzZB-9Vmb5A-t240x240.jpg"
+              src="https://thumbs.dreamstime.com/b/%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C-%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B-%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BE%D0%BA-%D0%BB%D0%B8%D1%86%D0%B0-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-226594813.jpg"
               alt="avatar"
               className="w-36 h-36 rounded-xl object-cover mb-6 border-2 border-black shadow-[0_0_10px_rgba(255,204,0,0.3)]"
             />
           </div>
-          {/* <span
-            className={`absolute bottom-7 right-24 w-4 h-4 rounded-full border-2 border-black ${isOnline ? "bg-green-600" : "bg-red-600"
-              }`}
-          /> */}
+          <span className="absolute top-36 right-12 w-2 h-2 rounded-full bg-green-800">
+            <span
+              className={`absolute w-4 h-4 rounded-full  animate-ping ${isOnline ? "bg-green-600" : "bg-red-600"
+                }`}>
+            </span>
+          </span>
         </div>
         <h2
           className="text-white font-extrabold tracking-tight text-center text-4xl md:text-4x1"
@@ -106,18 +109,22 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
 
 
 
+
         {coords && (
           <div
             className="mt-4 cursor-pointer w-full"
-            onClick={() => openMap(coords)}
+            onClick={() => {
+              const [lat, lon] = coords.split(",");
+              window.open(`https://2gis.kg/maps/geo/${lat},${lon}`, "_blank");
+            }}
           >
-            <img
-              src={`https://maps.googleapis.com/maps/api/staticmap?center=${coords}&zoom=15&size=600x300&markers=color:red|${coords}&key=ВАШ_API_KEY`}
-              alt="Map preview"
-              className="w-full h-48 rounded-lg object-cover shadow-lg"
-            />
+            <div className="w-full h-48 rounded-lg object-cover shadow-lg bg-yellow-400 flex items-center justify-center text-black font-bold text-lg">
+              Открыть карту в 2GIS
+            </div>
           </div>
         )}
+
+
 
         <div className="flex gap-4 mt-auto justify-center pt-6">
           <a
@@ -137,9 +144,12 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
             <FaInstagram />
           </a>
           <a
-            href="mailto:ady1ova178@gmail.com"
+            href="https://www.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gray-400 text-lg hover:text-white transition-all duration-200 active:scale-90"
           >
+
             <SiGoogle />
           </a>
           <a
@@ -152,7 +162,7 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
           </a>
         </div>
 
-      </aside>
+      </aside >
 
       <main className="flex-1 bg-[#2a2a2a] rounded-2xl p-6 shadow-lg shadow-yellow-400/10 flex flex-col">
         <Header
@@ -160,9 +170,8 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
           setActiveSection={setActiveSection}
         />
         <div className="flex-1 overflow-y-auto mt-6">{children}</div>
-        <Footer />
       </main>
-    </div>
+    </div >
   );
 };
 

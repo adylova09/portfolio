@@ -1,11 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const MapLocation = () => {
+const MapLocation = ({ defaultCoords }) => {
   const [userLocation, setUserLocation] = useState(null);
-  const mallLocation = {
-    lat: 42.85570920364617,
-    lng: 74.58258377467789,
-  };
 
   const getUserLocation = () => {
     if (!navigator.geolocation) {
@@ -14,45 +10,46 @@ const MapLocation = () => {
     }
 
     navigator.geolocation.getCurrentPosition(
-      (position) => {
+      (pos) => {
         setUserLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
         });
       },
-      () => {
-        alert("Не удалось получить геолокацию");
-      }
+      () => alert("Не удалось определить геолокацию")
     );
   };
 
   const openRoute = () => {
     if (!userLocation) return;
-
     window.open(
-      `https://www.google.com/maps/dir/${userLocation.lat},${userLocation.lng}/${mallLocation.lat},${mallLocation.lng}`,
+      `https://www.google.com/maps/dir/${userLocation.lat},${userLocation.lng}/${defaultCoords.lat},${defaultCoords.lng}`,
       "_blank"
     );
   };
 
+  const mapCenter = userLocation || defaultCoords;
+
+  const mapSrc = `https://www.google.com/maps/embed/v1/view?key=ВАШ_API_KEY&center=${mapCenter.lat},${mapCenter.lng}&zoom=15`;
+
   return (
-    <div style={{ width: "100%", maxWidth: "600px" }}>
+    <div style={{ width: "100%", maxWidth: "600px", margin: "0 auto" }}>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.811690846015!2d74.58258377467789!3d42.85570920364617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec9d3088356eb%3A0xb6b7beaa1240556a!2sAsia%20Mall!5e0!3m2!1sen!2skg!4v1769077183669"
         width="100%"
         height="350"
         style={{ border: 0 }}
         loading="lazy"
         allowFullScreen
+        src={mapSrc}
       />
 
-      <div style={{ marginTop: "12px" }}>
-        <button onClick={getUserLocation}>
+      <div style={{ marginTop: "12px", display: "flex", gap: "10px" }}>
+        <button onClick={getUserLocation} className="bg-yellow-400 px-3 py-1 rounded">
           📍 Определить моё местоположение
         </button>
 
         {userLocation && (
-          <button onClick={openRoute} style={{ marginLeft: "10px" }}>
+          <button onClick={openRoute} className="bg-green-500 px-3 py-1 rounded">
             🧭 Построить маршрут
           </button>
         )}
