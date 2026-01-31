@@ -57,7 +57,7 @@ const About = () => {
                   flex-none
                   w-32 h-32
                   md:w-40 md:h-40
-                  lg:w-48 lg:h-48
+                  lg:w-46 lg:h-48
                   bg-[#1f1f1f]
                   rounded-2xl
                   flex flex-col items-center justify-center

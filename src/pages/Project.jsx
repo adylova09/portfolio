@@ -4,13 +4,13 @@ export default function Projects() {
   const myProjects = [
     {
       name: "adylova09/exclusive-project",
-      description: "Описание первого проекта",
-      url: "https://github.com/adylova09/exclusive-project",
+      description: "смартфоны, телевизоры, косметика",
+      url: "https://exclusive-project-eight.vercel.app",
       stars: 5,
     },
     {
       name: "edupro-tech-kg/3legant-frontend",
-      description: "Описание второго проекта",
+      description: "мебель",
       url: "https://github.com/adylova09/project2",
       stars: 3,
     },
