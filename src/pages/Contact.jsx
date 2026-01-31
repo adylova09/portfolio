@@ -32,33 +32,33 @@ const Contact = () => {
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    emailjs
-      .send(
-        // "kalilov04",      //  Service ID из EmailJS
-        // "YOUR_TEMPLATE_ID",     // Template ID из EmailJS
-        {
-          from_name: form.name,
-          from_email: form.email,
-          subject: form.subject,
-          message: form.message,
-        },
-        // "c8GC8fcEai0r9q2vN"       // Public Key из EmailJS
-      )
-      .then(
-        (result) => {
-          alert("Сообщение отправлено! Проверяй свой e-mail ✅");
-          setForm({ name: "", email: "", subject: "", message: "" });
-        },
-        (error) => {
-          alert("Ошибка при отправке, попробуй ещё раз ❌");
-          console.log(error.text);
-        }
-      );
-  };
+  emailjs
+    .send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        from_name: form.name,
+        from_email: form.email,
+        subject: form.subject,
+        message: form.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      (result) => {
+        console.log("Email sent:", result.text);
+        alert("Сообщение отправлено! Проверяй свой e-mail ✅");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      },
+      (error) => {
+        console.error("Failed to send email:", error.text);
+        alert("Ошибка при отправке, попробуй ещё раз ❌");
+      }
+    );
+};
 
-  // Новые функции для геолокации и маршрута
   const getUserLocation = () => {
     if (!navigator.geolocation) {
       alert("Геолокация не поддерживается");
@@ -85,10 +85,10 @@ const Contact = () => {
 
   return (
     <div
-      className={`transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
+      className={`transition-all duration-700 ${
+        show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      }`}
     >
-
       <div className="mt-16 max-w-4xl mx-auto">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924.811690846015!2d74.58258377467789!3d42.85570920364617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec9d3088356eb%3A0xb6b7beaa1240556a!2sAsia%20Mall!5e0!3m2!1sen!2skg!4v1769077183669"
@@ -98,7 +98,6 @@ const Contact = () => {
         />
 
         <div className="flex flex-wrap gap-4 mt-4">
-
           {userCoords && (
             <button
               onClick={openRoute}
@@ -113,59 +112,56 @@ const Contact = () => {
       <h1 className="text-3xl font-bold text-white mb-4">Contact Form</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4 max-w-5xl mx-auto px-2">
-  <div className="flex flex-col md:flex-row gap-4">
-    <input
-      type="text"
-      name="name"
-      placeholder="Full Name"
-      value={form.name}
-      onChange={handleChange}
-      className="flex-1 p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
-      required
-    />
-    <input
-      type="email"
-      name="email"
-      placeholder="Email Address"
-      value={form.email}
-      onChange={handleChange}
-      className="flex-1 p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
-      required
-    />
-  </div>
+        <div className="flex flex-col md:flex-row gap-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={form.name}
+            onChange={handleChange}
+            className="flex-1 p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={form.email}
+            onChange={handleChange}
+            className="flex-1 p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
+            required
+          />
+        </div>
 
-  <input
-    type="text"
-    name="subject"
-    placeholder="Subject"
-    value={form.subject}
-    onChange={handleChange}
-    className="w-full p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
-    required
-  />
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          value={form.subject}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
+          required
+        />
 
-  <textarea
-    name="message"
-    placeholder="Your Message"
-    value={form.message}
-    onChange={handleChange}
-    className="w-full p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
-    rows={6} // делаем по умолчанию побольше высоту
-    required
-  />
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          value={form.message}
+          onChange={handleChange}
+          className="w-full p-3 rounded-md border border-gray-600 bg-[#1c1c1c] text-white placeholder-gray-400 shadow-md shadow-yellow-400/20 focus:outline-none focus:shadow-yellow-400/50 transition-all duration-300"
+          rows={6}
+          required
+        />
 
-  <div className="flex justify-end">
-    <button
-      type="submit"
-      className="px-6 py-3 bg-[#1c1c1c] text-white rounded border border-gray-600 shadow-md shadow-yellow-400/20 hover:shadow-yellow-400/50 transition-all duration-300 active:scale-95"
-    >
-      Send Message
-    </button>
-  </div>
-</form>
-
-
-
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="px-6 py-3 bg-[#1c1c1c] text-white rounded border border-gray-600 shadow-md shadow-yellow-400/20 hover:shadow-yellow-400/50 transition-all duration-300 active:scale-95"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

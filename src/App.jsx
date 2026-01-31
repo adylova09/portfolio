@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Resume from "./pages/Resume";
+import Project from "./pages/Project"; 
 import Contact from "./pages/Contact";
 import ScrollLine from "./components/ScrollLine";
 import MapModal from "./components/MapLocation";
+console.log(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
+import FooterHeader from "./components/FooterHeader";
 
 function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -17,8 +20,11 @@ function App() {
     setShowMap(true);
   };
 
-  const closeMap = () => setShowMap(false);
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
 
+  const closeMap = () => setShowMap(false);
 
   const renderSection = () => {
     switch (activeSection) {
@@ -28,6 +34,8 @@ function App() {
         return <About openMap={openMap} />;
       case "resume":
         return <Resume openMap={openMap} />;
+      case "project": 
+        return <Project />; 
       case "contact":
         return <Contact openMap={openMap} />;
       default:
@@ -47,7 +55,12 @@ function App() {
         {renderSection()}
       </Layout>
 
-      {showMap && <MapLoation coords={mapCoords} closeMap={closeMap} />}
+      <FooterHeader
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+      />
+
+      {showMap && <MapModal coords={mapCoords} closeMap={closeMap} />}
     </>
   );
 }
