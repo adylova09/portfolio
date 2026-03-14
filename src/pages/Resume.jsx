@@ -5,24 +5,19 @@ const Resume = () => {
 
   const education = [
     {
-      year: "2025",
-      title: "Frontend курсы (3 месяца)",
-      description: "Изучала HTML, CSS, JavaScript, React и Tailwind CSS."
+      year: "2026",
+      title: "Okurmen Bootcamp",
+      description: "Интенсивная программа по Frontend Development: HTML, CSS, JavaScript и React."
     },
     {
-      year: "2026 – настоящее время",
+      year: "2026",
+      title: "Edu Pro Academy",
+      description: "3-месячная стажировка по разработке интерфейсов и работе с REST API."
+    },
+    {
+      year: "2026",
       title: "Школа «Келечек»",
-      description: "Учусь в 11-м классе. Изучаю веб-разработку параллельно с учебой."
-    },
-    {
-      year: "2026",
-      title: "Саморазвитие во Frontend",
-      description: "Продолжаю улучшать навыки и закреплять базовые знания."
-    },
-    {
-      year: "2026",
-      title: "Практика и проекты",
-      description: "Отрабатываю навыки на мини-проектах и изучаю структуру приложений."
+      description: "Учусь в 11 классе и параллельно развиваюсь в веб-разработке."
     }
   ];
 
@@ -30,27 +25,22 @@ const Resume = () => {
     {
       year: "2026",
       title: "Junior Frontend Developer",
-      description: "Создаю интерфейсы на React с использованием Tailwind CSS."
+      description: "Разработка SPA-интерфейсов на React с использованием современного JavaScript."
     },
     {
       year: "2026",
-      title: "Пет-проекты",
-      description: "Разрабатываю собственные мини-приложения для портфолио."
+      title: "UI-компоненты",
+      description: "Создание переиспользуемых компонентов и управление состояниями приложения."
     },
     {
       year: "2026",
-      title: "Работа с компонентами",
-      description: "Пишу функциональные компоненты и работаю с состояниями."
+      title: "REST API интеграция",
+      description: "Подключение API, обработка загрузки данных и ошибок."
     },
     {
       year: "2026",
       title: "Адаптивная верстка",
-      description: "Делаю интерфейсы удобными для разных устройств."
-    },
-    {
-      year: "2026",
-      title: "Рост и развитие",
-      description: "Постоянно учусь и улучшаю качество кода."
+      description: "Создание интерфейсов для мобильных и десктопных устройств с TailwindCSS."
     }
   ];
 
@@ -74,9 +64,8 @@ const Resume = () => {
 
   return (
     <div
-      className={`transition-all duration-700 ${
-        show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-      }`}
+      className={`transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
     >
       <h1 className="text-3xl font-bold text-white mb-6">Resume</h1>
 
@@ -89,14 +78,14 @@ const Resume = () => {
       <button
         onClick={() =>
           window.open(
-            "/Gray and White Simple Professional Marketing Manager CV Resume.pdf",
+            "resume.pdf",
             "_blank"
           )
         }
         className="px-6 py-3 bg-black/90 text-white font-semibold rounded-md border border-yellow-400/50 shadow-[0_0_15px_rgba(255,204,0,0.3)] hover:shadow-[0_0_25px_rgba(255,204,0,0.5)] transition-all duration-300 active:scale-95"
       >
         Прочитать
-      </button>
+      </button> 
     </div>
   );
 };

@@ -31,7 +31,6 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
     <div className="flex flex-col lg:flex-row min-h-screen relative bg-black p-4 gap-4">
       <aside className="w-full lg:w-72 h-fit lg:sticky lg:top-4 self-start bg-[#1f1f1f] rounded-2xl p-6 flex flex-col shadow-lg shadow-yellow-400/10">
 
-        {/* AVATAR */}
         <div className="relative flex justify-center">
           <img
             src="https://thumbs.dreamstime.com/b/%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C-%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B-%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80%D0%B0-%D0%B7%D0%BD%D0%B0%D1%87%D0%BE%D0%BA-%D0%BB%D0%B8%D1%86%D0%B0-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-226594813.jpg"
@@ -39,7 +38,6 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
             className="w-36 h-36 rounded-xl object-cover mb-6 border-2 border-black shadow-[0_0_10px_rgba(255,204,0,0.3)]"
           />
 
-          {/* TOGGLE ICON (mobile / tablet only) */}
           <button
             onClick={() => setShowContacts(prev => !prev)}
             className="lg:hidden absolute -right-2 top-2 text-yellow-400 bg-[#1f1f1f]
@@ -48,7 +46,6 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
             {showContacts ? <MdClose /> : <MdContactMail />}
           </button>
 
-          {/* ONLINE DOT */}
           <span className="absolute top-36 right-12 w-2 h-2 rounded-full bg-green-800">
             <span
               className={`absolute w-4 h-4 rounded-full animate-ping ${isOnline ? "bg-green-600" : "bg-red-600"
@@ -67,7 +64,6 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
 
         <div className="w-full h-px bg-gray-500" />
 
-        {/* CONTACTS */}
         <div
 
           className={`
@@ -103,7 +99,6 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
           </div>
         </div>
 
-        {/* SOCIALS */}
         <div className="flex gap-4 mt-auto justify-center pt-6">
           <FaGithub className="text-gray-400 hover:text-white" />
           <FaInstagram className="text-gray-400 hover:text-white" />

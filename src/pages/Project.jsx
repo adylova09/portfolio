@@ -3,16 +3,25 @@ import { motion } from "framer-motion";
 export default function Projects() {
   const myProjects = [
     {
-      name: "adylova09/exclusive-project",
-      description: "Описание первого проекта",
-      url: "https://github.com/adylova09/exclusive-project",
+      name: "Exclusive Project",
+      description: "Веб-проект с интерфейсом на React и адаптивной версткой.",
+      url: "https://exclusive-project-eight.vercel.app/",
+      github: "https://github.com/adylova09/exclusive-project",
       stars: 5,
     },
     {
       name: "edupro-tech-kg/3legant-frontend",
-      description: "Описание второго проекта",
+      description: "уникальные мебели ",
       url: "https://github.com/adylova09/project2",
+      github: "https://github.com/edupro-tech-kg/3legant-frontend.git",
       stars: 3,
+    },
+    {
+      name: "Portfolio ",
+      description: "портфолио ",
+      url: "https://portfolio-tau-blue-86.vercel.app/",
+      github: "https://github.com/adylova09/portfolio.git",
+      stars: 4,
     },
   ];
 
@@ -50,6 +59,10 @@ export default function Projects() {
             <p className="text-neutral-400 mb-4">
               {repo.description}
             </p>
+
+            <div className="flex gap-4 mt-4 text-gray-400">
+              <a href={repo.github} target="_blank" rel="noreferrer">GitHub</a>
+            </div>
 
             <span className="text-sm font-medium text-indigo-400">
               ⭐ {repo.stars} stars
