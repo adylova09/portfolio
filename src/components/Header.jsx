@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Header = ({ activeSection, setActiveSection }) => {
   const menu = ["About", "Resume", "Project", "Contact"];
 
