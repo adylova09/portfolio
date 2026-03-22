@@ -45,13 +45,6 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
           >
             {showContacts ? <MdClose /> : <MdContactMail />}
           </button>
-
-          <span className="absolute top-36 right-12 w-2 h-2 rounded-full bg-green-800">
-            <span
-              className={`absolute w-4 h-4 rounded-full animate-ping ${isOnline ? "bg-green-600" : "bg-red-600"
-                }`}
-            />
-          </span>
         </div>
 
         <h2 className="text-white font-extrabold tracking-tight text-center text-4xl">
@@ -67,10 +60,10 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
         <div
 
           className={`
-    mt-6 w-full text-sm
-    ${showContacts ? "flex flex-col gap-6" : "hidden"}
-    lg:flex lg:flex-col lg:gap-6
-  `}
+          mt-6 w-full text-sm
+          ${showContacts ? "flex flex-col gap-6" : "hidden"}
+          lg:flex lg:flex-col lg:gap-6
+         `}
         >
 
 
@@ -100,10 +93,21 @@ const Layout = ({ children, activeSection, setActiveSection, openMap }) => {
         </div>
 
         <div className="flex gap-4 mt-auto justify-center pt-6">
-          <FaGithub className="text-gray-400 hover:text-white" />
-          <FaInstagram className="text-gray-400 hover:text-white" />
-          <SiGoogle className="text-gray-400 hover:text-white" />
-          <FaVk className="text-gray-400 hover:text-white" />
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <FaGithub className="text-gray-400 hover:text-white cursor-pointer" />
+          </a>
+
+          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <FaInstagram className="text-gray-400 hover:text-white cursor-pointer" />
+          </a>
+
+          <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+            <SiGoogle className="text-gray-400 hover:text-white cursor-pointer" />
+          </a>
+
+          <a href="https://vk.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <FaVk className="text-gray-400 hover:text-white cursor-pointer" />
+          </a>
         </div>
       </aside>
 
