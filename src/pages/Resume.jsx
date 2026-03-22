@@ -63,6 +63,7 @@ const Resume = () => {
   );
 
   return (
+    
     <div
       className={`transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
@@ -78,14 +79,14 @@ const Resume = () => {
       <button
         onClick={() =>
           window.open(
-            "resume.pdf",
+            "portfolio/public/Black and White Minimalist Accountant Resume",
             "_blank"
           )
         }
         className="px-6 py-3 bg-black/90 text-white font-semibold rounded-md border border-yellow-400/50 shadow-[0_0_15px_rgba(255,204,0,0.3)] hover:shadow-[0_0_25px_rgba(255,204,0,0.5)] transition-all duration-300 active:scale-95"
       >
         Прочитать
-      </button> 
+      </button>
     </div>
   );
 };

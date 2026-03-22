@@ -21,10 +21,9 @@ const FooterHeader = ({ activeSection, setActiveSection }) => {
                 key={item}
                 onClick={() => setActiveSection(item.toLowerCase())}
                 className={`relative text-sm font-medium transition-all duration-300
-                  ${
-                    isActive
-                      ? "text-yellow-400 after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-yellow-400"
-                      : "text-neutral-300 hover:text-yellow-400"
+                  ${isActive
+                    ? "text-yellow-400 after:absolute after:left-0 after:-bottom-2 after:h-[2px] after:w-full after:bg-yellow-400"
+                    : "text-neutral-300 hover:text-yellow-400"
                   }`}
               >
                 {item}
